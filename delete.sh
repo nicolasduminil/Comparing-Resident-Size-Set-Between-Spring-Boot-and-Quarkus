@@ -1,0 +1,1 @@
+curl -X "DELETE" "http://localhost:8081/rss/delete/1" -H "accept: */*"
