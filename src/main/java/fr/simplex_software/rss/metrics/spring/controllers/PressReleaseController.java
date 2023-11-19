@@ -1,5 +1,6 @@
 package fr.simplex_software.rss.metrics.spring.controllers;
 
+import fr.simplex_software.rss.metrics.spring.aspect.RestLog;
 import fr.simplex_software.rss.metrics.spring.model.*;
 import fr.simplex_software.rss.metrics.spring.services.*;
 import org.springframework.beans.factory.annotation.*;
@@ -20,12 +21,14 @@ public class PressReleaseController
     this.pressReleaseService = pressReleaseService;
   }
 
+  @RestLog
   @GetMapping("/all")
   public Collection<PressRelease> getAllPressReleases()
   {
     return pressReleaseService.getPressReleases();
   }
 
+  @RestLog
   @GetMapping("/pressRelease/{id}")
   public ResponseEntity<PressRelease> getPressRelease(@PathVariable Integer id)
   {
@@ -33,6 +36,7 @@ public class PressReleaseController
       new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
+  @RestLog
   @PostMapping("/add")
   public ResponseEntity<PressRelease> addPressRelease(@RequestBody PressRelease pressRelease)
   {
@@ -40,6 +44,7 @@ public class PressReleaseController
       new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED));
   }
 
+  @RestLog
   @PutMapping("/update")
   public ResponseEntity<PressRelease> editPressRelease(@RequestBody PressRelease pressRelease)
   {
@@ -47,6 +52,7 @@ public class PressReleaseController
       new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED));
   }
 
+  @RestLog
   @DeleteMapping("/delete/{id}")
   public ResponseEntity<String> deletePressRelease(@PathVariable("id") int pressReleaseId)
   {
