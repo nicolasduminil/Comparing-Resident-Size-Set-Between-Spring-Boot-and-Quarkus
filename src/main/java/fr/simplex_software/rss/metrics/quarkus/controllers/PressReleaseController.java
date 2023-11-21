@@ -1,5 +1,6 @@
 package fr.simplex_software.rss.metrics.quarkus.controllers;
 
+import fr.simplex_software.rss.metrics.quarkus.interceptors.LogTime;
 import fr.simplex_software.rss.metrics.quarkus.model.*;
 import fr.simplex_software.rss.metrics.quarkus.services.*;
 
@@ -13,6 +14,7 @@ import java.util.*;
 @Path("/rss")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@LogTime
 public class PressReleaseController
 {
   @Inject
